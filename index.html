@@ -11,9 +11,21 @@
          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
          crossorigin="anonymous"
       />
+      <link rel="stylesheet" href="style.css">
       <script src="app.js" defer></script>
    </head>
    <body>
+      <div class="popup-wrapper"></div>
+      <div class="popup">
+         <h4>
+            Average Score
+            <span class="popup-close"></span>
+         </h4>
+         <div class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, non.
+         </div>
+         <button class="popup-close btn btn-secondary">Close</button>
+      </div>
       <div class="container">
          <h1 class="text-center text-secondary my-3">
             - Score Average Calculator -
@@ -28,11 +40,13 @@
                type="text"
                class="form-control lesson-score"
                placeholder="Score"
+               pattern="[0-9]*"
             />
             <input
                type="text"
                class="form-control lesson-unit"
                placeholder="Unit"
+               pattern="[0-9]*"
             />
          </div>
          <button class="mt-2 btn btn-primary col-12 submit-btn">Submit</button>

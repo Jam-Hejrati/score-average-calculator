@@ -5,10 +5,26 @@ const submitBtn = document.querySelector(".submit-btn");
 const reasonBtn = document.querySelector(".reason-btn");
 const resetBtn = document.querySelector(".reset-btn");
 const lessonsInfo = document.querySelector(".lessons-info");
-const body = document.querySelector(".container");
+const container = document.querySelector(".container");
+const popupWrapper = document.querySelector(".popup-wrapper");
+const popupCard = document.querySelector(".popup");
+const popupClose = document.querySelectorAll(".popup-close");
 
 let logEntery = [];
 
+/*popup handling*/
+let popupCloseFunc = () => {
+   popupWrapper.classList.remove("show");
+   popupCard.classList.remove("show");
+};
+
+popupClose.forEach((button) => {
+   button.addEventListener("click", popupCloseFunc);
+});
+
+popupWrapper.addEventListener("click", popupCloseFunc);
+
+/*getting data*/
 const getData = (lesson, score, unit) => {
    const lessonInfo = {
       name: lesson,
@@ -20,6 +36,7 @@ const getData = (lesson, score, unit) => {
    return lessonInfo;
 };
 
+/*showing data*/
 submitBtn.addEventListener("click", () => {
    let lessonName = inputName.value;
    let lessonScore = +inputScore.value;
@@ -29,9 +46,9 @@ submitBtn.addEventListener("click", () => {
    info.textContent = `Lesson ${lessonName} Score is ${lessonScore} by Unit: ${
       lessonScore * lessonUnit
    } !`;
-   info.className = "alert";
+   info.className = "alert , lessons-info";
    info.classList.add("alert-secondary");
-   body.appendChild(info);
+   container.appendChild(info);
    inputName.value = "";
    inputScore.value = "";
    inputUnit.value = "";
@@ -47,6 +64,9 @@ reasonBtn.addEventListener("click", () => {
    console.table(logEntery);
    let average = reasonSum / unitSum;
    console.log(`The average is ${average} !`);
+
+   popupWrapper.classList.add("show");
+   popupCard.classList.add("show");
 });
 
 resetBtn.addEventListener("click", () => {
