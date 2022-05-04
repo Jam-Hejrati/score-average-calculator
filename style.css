@@ -51,6 +51,7 @@
 }
 
 .popup h4 {
+   margin: 0;
    padding: 15px 20px;
    border-bottom: 1px solid #ddd;
    display: -webkit-box;
@@ -69,7 +70,7 @@
    cursor: pointer;
 }
 
-.popup .content {
+.popup .popup-content {
    padding: 15px 20px;
    border-bottom: 1px solid #ddd;
 }
