@@ -28,19 +28,8 @@ const getData = (lesson, score, unit) => {
 
 /* inputs number validation */
 const isDigit = (value) => {
-   const val = Number(value) ? true : false;
+   const val = value === "0" || Number(value) ? true : false;
    return val;
-   // let val;
-   // if(value === 0){
-   //    val = true;
-   //    return val;
-   // } else if (Number(value)){
-   //    val = true;
-   //    return val;
-   // } else{
-   //    val = false;
-   //    return val;
-   // }
 };
 
 const inputStyleHandler = (element, state) => {
