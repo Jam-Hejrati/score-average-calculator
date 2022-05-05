@@ -14,7 +14,7 @@ const popupContent = document.querySelector(".popup-content");
 
 let logEntery = [];
 
-/*getting data*/
+/* getting data */
 const getData = (lesson, score, unit) => {
    const lessonInfo = {
       name: lesson,
@@ -26,22 +26,83 @@ const getData = (lesson, score, unit) => {
    return lessonInfo;
 };
 
-/*showing data*/
+/* inputs number validation */
+const isDigit = (value) => {
+   const val = Number(value) ? true : false;
+   return val;
+   // let val;
+   // if(value === 0){
+   //    val = true;
+   //    return val;
+   // } else if (Number(value)){
+   //    val = true;
+   //    return val;
+   // } else{
+   //    val = false;
+   //    return val;
+   // }
+};
+
+const inputStyleHandler = (element, state) => {
+   if (state === false) {
+      element.classList.add("wrong-input");
+      element.classList.add("border-danger");
+      element.classList.add("alert-danger");
+   } else {
+      element.classList.remove("wrong-input");
+      element.classList.remove("border-danger");
+      element.classList.remove("alert-danger");
+   }
+};
+
+/* showing data */
 submitBtn.addEventListener("click", () => {
-   let lessonName = inputName.value;
-   let lessonScore = +inputScore.value;
-   let lessonUnit = +inputUnit.value;
-   getData(lessonName, lessonScore, lessonUnit);
-   let info = document.createElement("div");
-   info.textContent = `Lesson ${lessonName} Score is ${lessonScore} by Unit: ${
-      lessonScore * lessonUnit
-   } !`;
-   info.className = "alert , lessons-info";
-   info.classList.add("alert-secondary");
-   container.appendChild(info);
-   inputName.value = "";
-   inputScore.value = "";
-   inputUnit.value = "";
+   /* first validating inputs */
+   if (isDigit(inputScore.value) && isDigit(inputUnit.value)) {
+      inputStyleHandler(inputScore, true);
+      inputStyleHandler(inputUnit, true);
+      let lessonScore = +inputScore.value;
+      let lessonUnit = +inputUnit.value;
+      let lessonName = inputName.value;
+
+      /* getting data */
+      getData(lessonName, lessonScore, lessonUnit);
+
+      /* create some shit to show data */
+      let info = document.createElement("div");
+      info.textContent = `Lesson ${lessonName} Score is ${lessonScore} by Unit: ${
+         lessonScore * lessonUnit
+      } !`;
+      info.className = "alert , lessons-info";
+      info.classList.add("alert-secondary");
+      container.appendChild(info);
+
+      /* clean inputs after submiting */
+      inputName.value = "";
+      inputScore.value = "";
+      inputUnit.value = "";
+   } else {
+      if (
+         isDigit(inputScore.value) === false &&
+         isDigit(inputUnit.value) === false
+      ) {
+         inputStyleHandler(inputScore, false);
+         inputStyleHandler(inputUnit, false);
+      } else if (
+         isDigit(inputScore.value) === false &&
+         isDigit(inputUnit.value) === true
+      ) {
+         inputStyleHandler(inputScore, false);
+         inputStyleHandler(inputUnit, true);
+      } else if (
+         isDigit(inputUnit.value) === false &&
+         isDigit(inputScore.value) === true
+      ) {
+         inputStyleHandler(inputScore, true);
+         inputStyleHandler(inputUnit, false);
+      }
+      return;
+   }
 });
 
 reasonBtn.addEventListener("click", () => {
@@ -54,9 +115,10 @@ reasonBtn.addEventListener("click", () => {
    let average = reasonSum / unitSum;
    if (!average) {
       average = 0;
-   } else {}
+   } else {
+   }
 
-   /*popup handling*/
+   /* popup handling */
    let popupWrapper = document.createElement("div");
    popupWrapper.className = "popup-wrapper";
    body.prepend(popupWrapper);

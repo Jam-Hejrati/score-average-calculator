@@ -1,4 +1,4 @@
-:is(.lesson-score, .lesson-unit):invalid {
+:is(.lesson-score, .lesson-unit).wrong-input {
    animation: shake 300ms;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .popup .popup-content {
-   padding: 15px 20px;
+   padding: 15px;
    border-bottom: 1px solid #ddd;
 }
 
