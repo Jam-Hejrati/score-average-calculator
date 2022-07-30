@@ -1,86 +1,111 @@
 :is(.lesson-score, .lesson-unit).wrong-input {
-   animation: shake 300ms;
+    animation: shake 300ms;
 }
 
-.lesson-score, .lesson-unit , .lessons-info{
+.lesson-score, .lesson-unit, .lessons-info {
     z-index: 0;
 }
 
 @keyframes shake {
-   25% {
-      transform: translateX(4px);
-   }
-   50% {
-      transform: translateX(-4px);
-   }
-   75% {
-      transform: translateX(4px);
-   }
+    25% {
+        transform: translateX(4px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
 }
 
 .popup-wrapper {
-   position: fixed;
-   inset: 0;
-   width: 100%;
-   height: 100%;
-   z-index: -1;
-   background-color: rgba(0, 0, 0, 0);
-   -webkit-transition: background-color 0.5s;
-   transition: background-color 0.5s;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-transition: background-color 0.5s;
+    transition: background-color 0.5s;
 }
 
 .popup-wrapper.show {
-   background-color: rgba(0, 0, 0, 0.4);
-   z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
 .popup {
-   background-color: #fff;
-   border: 1px solid #ddd;
-   border-radius: 7px;
-   position: fixed;
-   left: 50%;
-   top: 50%;
-   -webkit-transform: translate(-50% , -95%);
-   transform: translateX(-50% , -95%);
-   opacity: 0;
-   visibility: hidden;
-   -webkit-transition: opacity 0.5s;
-   transition: opacity 0.5s;
-   z-index: 2;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -95%);
+    transform: translateX(-50%, -95%);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    z-index: 2;
 }
 
 .popup h4 {
-   margin: 0;
-   padding: 15px 20px;
-   border-bottom: 1px solid #ddd;
-   display: -webkit-box;
-   display: -ms-flexbox;
-   display: flex;
-   -webkit-box-align: center;
-   -ms-flex-align: center;
-   align-items: center;
-   -webkit-box-pack: justify;
-   -ms-flex-pack: justify;
-   justify-content: space-between;
+    margin: 0;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
 
 .popup h4 .popup-close::after {
-   content: "\00d7";
-   cursor: pointer;
+    content: "\00d7";
+    cursor: pointer;
 }
 
 .popup .popup-content {
-   padding: 15px;
-   border-bottom: 1px solid #ddd;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
 }
 
 .popup .popup-close {
-   display: block;
-   margin: 15px 20px 15px auto;
+    display: block;
+    margin: 15px 20px 15px auto;
 }
 
 .popup.show {
-   opacity: 1;
-   visibility: visible;
+    opacity: 1;
+    visibility: visible;
+}
+
+.lessons-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete-button {
+    width: 25px;
+    height: 25px;
+    background-color: #dc3545;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.delete-button::after {
+    content: "\00d7";
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
